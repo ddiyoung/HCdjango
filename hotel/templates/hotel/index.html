@@ -67,7 +67,7 @@
     {% for hotel in hotels %}
         <div class="card">
             <div class="card-image">
-                <a href="{{hotel.link}}"><img src="{{hotel.image}}" /></a>
+                <a href="{{hotel.link}}"><img src="{{hotel.image}}" onerror="this.src='https://ssl.pstatic.net/static/movie/2012/06/dft_img203x290.png';"/></a>
             </div>
             <div class="card-info">
                 <a href="{{hotel.link}}"><div class="card-title">{{hotel.title}}</div></a>

@@ -11,7 +11,8 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         headers = {'Content-Type': 'plain/text', 'X-Naver-Client-Id': 'L7fdgHlj4mgWbysxowRw', 'X-Naver-Client-Secret': 'fUtZiApJSR'}
-        res = requests.get("https://openapi.naver.com/v1/search/movie?query=starwars&display=100&start=1&genre=&country=&yearfrom=1980&yearto=2020", headers=headers)
+        url = 'https://openapi.naver.com/v1/search/movie?query=starwars&display=100&start=1&genre=&country=&yearfrom=1980&yearto=2020'
+        res = requests.get(url=url, headers=headers)
         data = res.json()['items']
         for mo in data:
             hotel = Hotel(

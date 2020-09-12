@@ -17,8 +17,6 @@ def index(request):
             'pubDate': value.pubDate,
             'userRating': value.userRating,
         })
-
-
     return render(request, 'hotel/index.html', {'hotels': hotels})
 
 

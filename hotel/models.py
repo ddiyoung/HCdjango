@@ -8,7 +8,6 @@ class Hotel(models.Model):
     link = models.CharField(max_length=150, default='')
     image = models.CharField(max_length=150, default='')
     pubDate = models.CharField(max_length=6, default='')
-    director = models.CharField(max_length=50, default='')
     userRating = models.CharField(max_length=50, default='')
 
 
