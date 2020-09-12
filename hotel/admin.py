@@ -6,7 +6,7 @@ from hotel.models import Hotel
 
 @admin.register(Hotel)
 class HotelAdmin(admin.ModelAdmin):
-    list_display = ('id', 'movieNm', 'openDt', 'nationAlt', 'repGenreNm')
+    list_display = ('title', 'link', 'image', 'pubDate', 'userRating')
 
 
 

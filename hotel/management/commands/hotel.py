@@ -7,14 +7,17 @@ import requests
 
 
 class Command(BaseCommand):
-    help = "hangang temperature collector"
+    help = "MOVIE COLLECTOR"
 
     def handle(self, *args, **options):
-        res = requests.get("http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList?key=321d10e609b727882f3cbd1c86dfa054&openStartDt=2015")
-        data = res.json()['movieListResult']['movieList']
+        headers = {'Content-Type': 'plain/text', 'X-Naver-Client-Id': 'L7fdgHlj4mgWbysxowRw', 'X-Naver-Client-Secret': 'fUtZiApJSR'}
+        res = requests.get("https://openapi.naver.com/v1/search/movie?query=starwars&display=100&start=1&genre=&country=&yearfrom=1980&yearto=2020", headers=headers)
+        data = res.json()['items']
         for mo in data:
-            hotel = Hotel(movieNm=mo['movieNm'],
-                          openDt=mo['openDt'],
-                          nationAlt=mo['nationAlt'],
-                          repGenreNm=mo['repGenreNm'])
+            hotel = Hotel(
+                title=mo['title'],
+                link=mo['link'],
+                image=mo['image'],
+                pubDate=mo['pubDate'],
+                userRating=mo['userRating'])
             hotel.save()

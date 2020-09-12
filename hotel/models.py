@@ -4,10 +4,11 @@ from django.db import models
 
 
 class Hotel(models.Model):
-    id = models.AutoField(primary_key=True)
-    movieNm = models.CharField(max_length=100, default='')
-    openDt = models.CharField(max_length=100, default='')
-    nationAlt = models.CharField(max_length=30, default='')
-    repGenreNm = models.CharField(max_length=30, default='')
+    title = models.CharField(max_length=50, default='')
+    link = models.CharField(max_length=150, default='')
+    image = models.CharField(max_length=150, default='')
+    pubDate = models.CharField(max_length=6, default='')
+    director = models.CharField(max_length=50, default='')
+    userRating = models.CharField(max_length=50, default='')
 
 

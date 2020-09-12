@@ -2,14 +2,82 @@
 <html>
 <head>
     <title>상영중인 영화</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 </head>
+<style>
+    .main {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card {
+        width: 50%;
+        margin: 0 auto;
+        display: flex;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.1), 0 2px 12px rgba(0,0,0,0.1);
+    }
+
+    .card + .card {
+        margin-top: 20px;
+    }
+
+    .card-image {
+        padding: 15px;
+        width: 110px;
+        height: 160px;
+    }
+
+    .card-image img {
+        max-width: 100%;
+    }
+
+    .card-info {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .card-title {
+        padding: 20px;
+        font-weight: 600;
+        font-size: 24px;
+        display: flex;
+        margin-top: 40px;
+        align-items: center;
+    }
+
+    .card-etc {
+        padding: 20px;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .star {
+        margin-right: 10px;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+</style>
 <body>
-{% for hotel in hotels %}
-<li>{{ hotel.count }}
-    {{ hotel.movieNm }}
-    {{ hotel.openDt }}
-    {{ hotel.nationAlt }}
-    {{ hotel.repGenreNm }}</li>
-{% endfor %}
+    <div class="main">
+    {% for hotel in hotels %}
+        <div class="card">
+            <div class="card-image">
+                <a href="{{hotel.link}}"><img src="{{hotel.image}}" /></a>
+            </div>
+            <div class="card-info">
+                <a href="{{hotel.link}}"><div class="card-title">{{hotel.title}}</div></a>
+                <div class="card-etc">
+                    <div class="star">평점 : {{hotel.userRating}}</div>
+                    <div class="date">개봉 : {{hotel.pubDate}}</div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
 </body>
 </html>

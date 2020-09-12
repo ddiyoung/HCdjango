@@ -7,29 +7,23 @@ from hotel.models import Hotel
 def index(request):
     hotel = Hotel.objects.all()
     hotels = []
-    count = 0
 
     for value in hotel:
-        count += 1
-        """
-        hotels.append(value.id)
-        hotels.append(value.movieNm)
-        hotels.append(value.openDt)
-        hotels.append(value.nationAlt)
-        hotels.append(value.repGenreNm)
-        """
         hotels.append({
             'id': value.id,
-            'movieNm': value.movieNm,
-            'openDt': value.openDt,
-            'nationAlt': value.nationAlt,
-            'repGenreNm': value.repGenreNm,
-            'count': count
+            'title': value.title,
+            'link': value.link,
+            'image': value.image,
+            'pubDate': value.pubDate,
+            'userRating': value.userRating,
         })
 
-    return render(request, 'hotel/index.html', {'hotels': hotels},)
+
+    return render(request, 'hotel/index.html', {'hotels': hotels})
 
 
-'''JsonResponse({
+'''
+JsonResponse({
         'hotels': hotels
-    }, json_dumps_params={'ensure_ascii': False})'''
+    }, json_dumps_params={'ensure_ascii': False})
+'''
