@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>상영중인 영화</title>
+</head>
+<body>
+{% for hotel in hotels %}
+<li>{{ hotel.count }}
+    {{ hotel.movieNm }}
+    {{ hotel.openDt }}
+    {{ hotel.nationAlt }}
+    {{ hotel.repGenreNm }}</li>
+{% endfor %}
+</body>
+</html>
