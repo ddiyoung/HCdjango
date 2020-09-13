@@ -10,4 +10,6 @@ class Hotel(models.Model):
     pubDate = models.CharField(max_length=6, default='')
     userRating = models.CharField(max_length=50, default='')
 
+    def __str__(self):
+        return self.title
 
