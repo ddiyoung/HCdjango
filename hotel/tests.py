@@ -1,7 +1,6 @@
-from django.test import TestCase
+from django.test import Client, TestCase
 
 from hotel.models import Hotel
-# Create your tests here.
 
 
 class HotelTestCase(TestCase):
@@ -10,3 +9,9 @@ class HotelTestCase(TestCase):
         h.save()
 
         assert h.title == '테넷' and h.link == 'https://naver.com' and h.image == 'https://ssl.pstatic.net/imgmovie/mdi/mit110/1323/132345_P01_153355.jpg' and h.pubDate == '2001' and h.userRating == '10.00'
+
+    def test_hotel_access_page(self):
+        c = Client()
+        resp = c.get("/hotel/")
+        assert resp.status_code == 200
+
