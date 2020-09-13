@@ -5,7 +5,6 @@ from datetime import datetime
 import requests
 
 
-
 class Command(BaseCommand):
     help = "MOVIE COLLECTOR"
 
@@ -15,10 +14,10 @@ class Command(BaseCommand):
         res = requests.get(url=url, headers=headers)
         data = res.json()['items']
         for mo in data:
-            hotel = Hotel(
+            Hotel(
                 title=mo['title'],
                 link=mo['link'],
                 image=mo['image'],
                 pubDate=mo['pubDate'],
-                userRating=mo['userRating'])
-            hotel.save()
+                userRating=mo['userRating']).save()
+
